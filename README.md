@@ -27,7 +27,7 @@ pip install git+https://github.com/miili/pysurf96
 
 ## Example
 
-```
+```python
 import numpy as np
 from pysurf96 import surf96
 
