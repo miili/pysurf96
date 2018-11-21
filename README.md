@@ -1,4 +1,5 @@
 # PySurf96
+![Python23](https://img.shields.io/badge/python-2.7%20%7C%203.x-brightgreen.svg)
 
 _Modelling Surface Wave Dispersion Curves_
 
