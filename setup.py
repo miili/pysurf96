@@ -33,7 +33,7 @@ setup(
         Extension(
             name='pysurf96.surfdisp96_ext',
             sources=['src/surfdisp96.f'],
-            extra_f77_compile_args='-g3 -ffixed-line-length-none -ffloat-store -W -fbounds-check -m64 -mcmodel=medium'.split(), # noqa
+            extra_f77_compile_args='-O3 -ffixed-line-length-none -fbounds-check -m64'.split(), # noqa
             f2py_options=['only:', 'surfdisp96', ':'],
             language='f77')
         ]

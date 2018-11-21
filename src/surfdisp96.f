@@ -53,7 +53,7 @@ c
 c-----
 
        subroutine surfdisp96(thkm,vpm,vsm,rhom,nlayer,iflsph,iwave,
-     &                       mode,igr,kmax,t,cg)
+     &                       mode,igr,kmax,t,cg,err)
      
         parameter(LER=0,LIN=5,LOT=6)
         integer NL, NL2, NLAY

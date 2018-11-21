@@ -93,3 +93,6 @@ def surf96(thickness, vp, vs, rho, periods,
             ' which is OK if there are Rayleigh data.')
 
     return result[:kmax]
+
+
+__all__ = ['surf96', 'Surf96Error']
