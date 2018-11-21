@@ -1,14 +1,14 @@
 # PySurf96
 
-## Modelling Surface Wave Dispersion Curves
+_Modelling Surface Wave Dispersion Curves_
 
-This a slim wrapper around `surf96` from _Computer programs in seismology_ by R. Hermann (http://www.eas.slu.edu/eqc/eqccps.html)
+This is a slim wrapper around the program `surf96` from _Computer programs in seismology_ by R. Hermann (http://www.eas.slu.edu/eqc/eqccps.html) to forward model seismic surface wave dispersion curves.
 
-In this realisation we wrap the Fortran77 code through `f2py`, which is approximately **5x faster** than calling a subprocess.
+In this realisation we wrap the Fortran77 code through `f2py`, which is approximately **5x faster** than calling a Python subprocess.
 
 ## Installation
 
-This packages is for Python2 and Python3
+This package is for Python 2 and Python 3
 Prerequisits are numpy and a Fortran77 compiler, like GNU GCC.
 
 ```
@@ -40,6 +40,9 @@ periods = np.linspace(1., 20., 20)
 dispersion_velocities = surf96(thickness, vp, vs, rho, periods)
 ```
 
-## Citation
+## Citations and Acknowledgments
 
-    Herrmann, R. B. (2013) Computer programs in seismology: An evolving tool for instruction and research, Seism. Res. Lettr. 84, 1081-1088, doi:10.1785/0220110096 
+> Herrmann, R. B. (2013) Computer programs in seismology: An evolving tool for instruction and research, Seism. Res. Lettr. 84, 1081-1088, doi:10.1785/0220110096
+
+Thanks to Hongjian Fang for creating the Fortran subroutine (https://github.com/caiweicaiwei/SurfTomo)
+
