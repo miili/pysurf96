@@ -7,7 +7,7 @@ This is a slim wrapper around the program `surf96` from _Computer programs in se
 
 In this realisation the Fortran77 code is wrapped by `f2py`, which makes the forward computation approximately **8x faster** compared over calling a Python subprocess.
 
-For more useful software for seismology visit https://pyrocko.org.
+More useful software for seismology at https://pyrocko.org.
 
 ## Installation
 
