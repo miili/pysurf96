@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 try:
     from numpy.distutils.core import Extension
     from numpy.distutils.core import setup

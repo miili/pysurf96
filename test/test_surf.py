@@ -1,11 +1,9 @@
 import numpy as num
-import pysurf96
+from pysurf96 import surfdisp96_ext
+from pysurf96 import surf96
 
 
-km = 1e3
-
-
-def test_surf():
+def test_surfdisp96_ext():
     '''
     c----- parameters
     c     thkm, vpm, vsm, rhom: model for dispersion calculation
@@ -39,13 +37,26 @@ def test_surf():
     t[:21] = num.linspace(1, 40, 21)
     result = num.zeros(60)
 
-    pysurf96.surf96(th, vp, vs, rho, nlayer, iflsph, iwave,
-                    mode, igr, kmax, t, result)
+    surfdisp96_ext.surfdisp96(
+        th, vp, vs, rho, nlayer, iflsph, iwave,
+        mode, igr, kmax, t, result)
 
     return t, result
 
 
+def test_wrapper():
+
+    thickness = num.array([5., 23., 8., 0])
+    vs = num.array([2, 3.6, 3.8, 3.3])
+    vp = vs * 1.73
+    rho = vp * .32 + .77
+    periods = num.linspace(1., 20., 20)
+
+    res = surf96(thickness, vp, vs, rho, periods)
+    print(res)
+
+
 if __name__ == '__main__':
-    t, cg = test_surf()
-    for p, c in zip(t, cg):
-        print(p, c)
+    t, res = test_surfdisp96_ext()
+    print(t, res)
+    test_wrapper()
