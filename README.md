@@ -2,13 +2,14 @@
 
 _Modelling Surface Wave Dispersion Curves_
 
-This is a slim wrapper around the program `surf96` from _Computer programs in seismology_ by R. Hermann (http://www.eas.slu.edu/eqc/eqccps.html) to forward model seismic surface wave dispersion curves.
+This is a slim wrapper around the program `surf96` from _Computer programs in seismology_ by R. Hermann (http://www.eas.slu.edu/eqc/eqccps.html) for forward modelling of Rayleigh and Love wave dispersion curves.
 
-In this realisation we wrap the Fortran77 code through `f2py`, which is approximately **5x faster** than calling a Python subprocess.
+In this realisation the Fortran77 code is wrapped by `f2py`, which makes the forward computation approximately **5x faster** compared over calling a Python subprocess.
 
 ## Installation
 
-This package is for Python 2 and Python 3
+This package is for Python 2 and Python 3.
+
 Prerequisits are numpy and a Fortran77 compiler, like GNU GCC.
 
 ```
