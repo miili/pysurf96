@@ -3,11 +3,7 @@ try:
     from numpy.distutils.core import Extension
     from numpy.distutils.core import setup
 except ImportError:
-    class NoNumpy(Exception):
-        pass
-
-    raise NoNumpy('Numpy Needs to be installed '
-                  'for extensions to be compiled.')
+    raise ImportError('Numpy needs to be installed!')
 
 
 setup(
