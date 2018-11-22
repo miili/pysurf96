@@ -31,9 +31,8 @@ pip install git+https://github.com/miili/pysurf96
 import numpy as np
 from pysurf96 import surf96
 
-# Thickness in km
-thicknesses = np.array([5., 23., 8., 0])
-
+# Define the velocity model in km and km/s
+thickness = np.array([5., 23., 8., 0])
 vs = np.array([2, 3.6, 3.8, 3.3])
 vp = vs * 1.73
 rho = vp * .32 + .77
@@ -41,7 +40,8 @@ rho = vp * .32 + .77
 # Periods we are interested in
 periods = np.linspace(1., 20., 20)
 
-dispersion_velocities = surf96(thickness, vp, vs, rho, periods)
+velocities = surf96(thickness, vp, vs, rho, periods,
+                    wave='love', mode=1, velocity='group', flat_earth=True)
 ```
 
 ## Citations and Acknowledgments
