@@ -36,16 +36,16 @@ c
 c     Changes
 c     28 JAN 2003 - fixed minor but for sphericity correction by
 c         saving one parameter in subroutine sphere
-c     20 JUL 2004 - removed extraneous line at line 550 
+c     20 JUL 2004 - removed extraneous line at line 550
 c         since dc not defined
 c         if(dabs(c1-c2) .le. dmin1(1.d-6*c1,0.005d+0*dc) )go to 1000
 c     28 DEC 2007 - changed the Earth flattening to now use layer
-c         midpoint and the Biswas (1972: PAGEOPH 96, 61-74, 1972) 
+c         midpoint and the Biswas (1972: PAGEOPH 96, 61-74, 1972)
 c         density mapping for P-SV  - note a true comparison
 c         requires the ability to handle a fluid core for SH and SV
 c         Also permit one layer with fluid is base of the velocity is 0.001 km/sec
 c-----
-c     13 JAN 2010 - modified by Huajian Yao at MIT for calculation of 
+c     13 JAN 2010 - modified by Huajian Yao at MIT for calculation of
 c          group or phase velocities
 c-----
 c     21 NOV 2018 - python wrapper by Marius Paul Isken
@@ -54,7 +54,7 @@ c-----
 
        subroutine surfdisp96(thkm,vpm,vsm,rhom,nlayer,iflsph,iwave,
      &                       mode,igr,kmax,t,cg,err)
-     
+
         parameter(LER=0,LIN=5,LOT=6)
         integer NL, NL2, NLAY
         parameter(NL=100,NLAY=100,NL2=NL+NL)
@@ -78,14 +78,14 @@ c     igr - I4: 0 phase velocity, > 0 group velocity
 c     kmax - I4: number of periods (t) for dispersion calculation
 c     t - period vector (t(NP))
 c     cg - output phase or group velocities (vector,cg(NP))
-c----- 
+c-----
         real*4 thkm(NLAY),vpm(NLAY),vsm(NLAY),rhom(NLAY)
         integer nlayer,iflsph,iwave,mode,igr,kmax,err
         double precision twopi,one,onea
         double precision cc,c1,clow,cm,dc,t1
         double precision t(NP),c(NP),cb(NP),cg(NP)
         real*4 d(NL),a(NL),b(NL),rho(NL),rtp(NL),dtp(NL),btp(NL)
-c        common/modl/ d,a,b,rho,rtp,dtp,btp     
+c        common/modl/ d,a,b,rho,rtp,dtp,btp
 c        common/para/ mmax,llw,twopi
         integer*4 iverb(2)
         integer*4 llw
@@ -94,7 +94,7 @@ c        common/para/ mmax,llw,twopi
 
 c    maximum number of layers in the model
         mmax = nlayer
-c    is the model flat (nsph = 0) or sphere (nsph = 1)   
+c    is the model flat (nsph = 0) or sphere (nsph = 1)
         nsph = iflsph
 c    initialising error state
         err = 0
@@ -108,8 +108,8 @@ c     save current values
             d(i) = thkm(i)
             rho(i) = rhom(i)
 c           print *,d(i), b(i)
-   39   continue       
-        
+   39   continue
+
         if(iwave.eq.1)then
            idispl = kmax
            idispr = 0
@@ -117,16 +117,16 @@ c           print *,d(i), b(i)
            idispl = 0
            idispr = kmax
         endif
-        
+
         iverb(1) = 0
-        iverb(2) = 0        
+        iverb(2) = 0
 c ---- constant value
        sone0 = 1.500
-c ---- phase velocity increment for searching root      
+c ---- phase velocity increment for searching root
        ddc0 = 0.005
-c ---- frequency increment (%) for calculating group vel. using g = dw/dk = dw/d(w/c)       
+c ---- frequency increment (%) for calculating group vel. using g = dw/dk = dw/d(w/c)
        h0 = 0.005
-c ---- period range is:ie for calculation of dispersion     
+c ---- period range is:ie for calculation of dispersion
 
 c-----
 c     check for water layer
@@ -190,8 +190,8 @@ c            write(ifunc,*) kmax,igr,h
             if(sone.lt. 0.01) sone=2.0
             onea=dble(sone)
 c-----
-c     get starting value for phase velocity, 
-c         which will correspond to the 
+c     get starting value for phase velocity,
+c         which will correspond to the
 c     VP/VS ratio
 c-----
         if(jsol.eq.0)then
@@ -245,7 +245,7 @@ c     c(k-1) is the velocity estimate of the present mode
 c     at the k-1 period, while c(k) is the phase velocity of the
 c     previous mode at the k period. Since there must be no mode
 c     crossing, we make use of these values. The only complexity
-c     is that the dispersion may be reversed. 
+c     is that the dispersion may be reversed.
 c
 c     The subroutine getsol determines the zero crossing and refines
 c     the root.
@@ -307,7 +307,7 @@ c -----         calculate group velocity and output phase and group velocities
                 cg(k) = gvel
 c                write(ifunc,*) itst,iq,t(k),(cc0+cc1)/2,gvel
 c -----         print *, itst,iq,t(k),t1a,t1b,cc0,cc1,gvel
-            endif       
+            endif
  1600     continue
             go to 1800
  1700     if(iq.gt.1) go to 1750
@@ -413,12 +413,12 @@ c-----
         real*8 c1, c2, cn, cm, dc, t1, clow
         real*8 dltar, del1, del2, del1st, plmn
         save del1st
-        real*4 d(NL),a(NL),b(NL),rho(NL),rtp(NL),dtp(NL),btp(NL)        
+        real*4 d(NL),a(NL),b(NL),rho(NL),rtp(NL),dtp(NL),btp(NL)
         integer llw,mmax
 c-----
 c     to avoid problems in mode jumping with reversed dispersion
 c     we note what the polarity of period equation is for phase
-c     velocities just beneath the zero crossing at the 
+c     velocities just beneath the zero crossing at the
 c         first period computed.
 c-----
 c     bracket solution
@@ -488,9 +488,9 @@ c-----
 c     Transform spherical earth to flat earth
 c
 c     Schwab, F. A., and L. Knopoff (1972). Fast surface wave and free
-c     mode computations, in  Methods in Computational Physics, 
+c     mode computations, in  Methods in Computational Physics,
 c         Volume 11,
-c     Seismology: Surface Waves and Earth Oscillations,  
+c     Seismology: Surface Waves and Earth Oscillations,
 c         B. A. Bolt (ed),
 c     Academic Press, New York
 c
@@ -601,7 +601,7 @@ c-----
 c-----
 c     define new bounds according to the sign of the period equation
 c-----
-            if(dsign(1.d+00,del3)*dsign(1.d+00,del1) .lt.0.0d+00)then 
+            if(dsign(1.d+00,del3)*dsign(1.d+00,del1) .lt.0.0d+00)then
                 c2 = c3
                 del2 = del3
             else
@@ -677,7 +677,7 @@ c     &  a0,cpcq,cpy,cpz,cqw,cqx,xy,xz,wy,wz)
      &  mmax,llw,twopi,a0,cpcq,cpy,cpz,cqw,cqx,xy,xz,wy,wz)
         implicit double precision (a-h,o-z)
         parameter(NL=100)
-        real*4 d(NL),a(NL),b(NL),rho(NL),rtp(NL),dtp(NL),btp(NL)    
+        real*4 d(NL),a(NL),b(NL),rho(NL),rtp(NL),dtp(NL),btp(NL)
         c3 = 0.5*(c1 + c2)
         wvno=omega/c3
         del3 = dltar(wvno,omega,ifunc,d,a,b,rho,rtp,dtp,btp,mmax,llw,twopi)
@@ -693,7 +693,7 @@ c   control the way to P-SV or SH.
 c
         implicit double precision (a-h,o-z)
         parameter(NL=100)
-        real*4 d(NL),a(NL),b(NL),rho(NL),rtp(NL),dtp(NL),btp(NL)        
+        real*4 d(NL),a(NL),b(NL),rho(NL),rtp(NL),dtp(NL),btp(NL)
 c
         if(kk.eq.1)then
 c   love wave period equation
