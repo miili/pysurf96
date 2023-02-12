@@ -27,6 +27,36 @@ Or through pip:
 pip install git+https://github.com/miili/pysurf96
 ```
 
+## Documentation
+
+Essentially this is a single function, `surf96`. Here is the docstring:
+
+```
+Calculate synthetic surface wave dispersion curves.
+    Calculate synthetic surface wave dispersion curves for a given earth model, wave
+    type and periods.
+    This is a slim Fortran wrapper around surf96 from Computer Programs in Seismology
+    from R. Hermann (2013)
+    Args:
+        thickness (np.ndarray): Layer thickness in kilometers.
+        vp (np.ndarray): Layer Vp velocity.
+        vs (np.ndarray): Layer Vs velocity.
+        rho (np.ndarray): Layer density in g/m^3.
+        periods (np.ndarray): The periods in seconds, where wave velocity is calculated
+        wave (WaveType, optional): The wave type, "love" or "rayleigh".
+            Defaults to "love".
+        mode (int, optional): Mode of the wave, 1: fundamental, 2: second-mode, etc...
+            Defaults to 1.
+        velocity (Velocity, optional): "group" or "phase" velocity. Defaults to "group".
+        flat_earth (bool, optional): Assume a flat earth. Defaults to True.
+    Raises:
+        ValueError: Raised when input values are unexpected.
+        Surf96Error: If surf96 fortran code raises an error,
+            this may be due to low velocity zone.
+    Returns:
+        np.ndarray: The surface wave velocities at defined periods.
+```
+
 ## Example
 
 ```python

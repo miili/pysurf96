@@ -36,15 +36,15 @@ def surf96(
     from R. Hermann (2013)
 
     Args:
-        thickness (np.ndarray): Layer thickness in kilometers.
-        vp (np.ndarray): Layer Vp velocity.
-        vs (np.ndarray): Layer Vs velocity.
-        rho (np.ndarray): Layer density in g/m^3.
+        thickness (np.ndarray): Layer thickness in [km].
+        vp (np.ndarray): Layer Vp velocity in [km/s].
+        vs (np.ndarray): Layer Vs velocity in [km/s].
+        rho (np.ndarray): Layer density in [g/m^3].
         periods (np.ndarray): The periods in seconds, where wave velocity is calculated
         wave (WaveType, optional): The wave type, "love" or "rayleigh".
             Defaults to "love".
         mode (int, optional): Mode of the wave, 1: fundamental, 2: second-mode, etc...
-            Defaults to 1.
+            Minimum is fundamental mode (1). Defaults to 1.
         velocity (Velocity, optional): "group" or "phase" velocity. Defaults to "group".
         flat_earth (bool, optional): Assume a flat earth. Defaults to True.
 
