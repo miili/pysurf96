@@ -1,18 +1,12 @@
 [build-system]
-requires = [
-    "wheel",
-    "setuptools >= 61.0.0",
-    "oldest-supported-numpy",
-    "setuptools_scm[toml]>=6.2",
-]
-build-backend = "setuptools.build_meta"
+requires = ["scikit-build-core", "numpy"]
+build-backend = "scikit_build_core.build"
 
 [project]
 name = "pysurf96"
-requires-python = ">=3.7"
-license = { text = "GPLv3" }
-dynamic = ["version"]
+version = "0.0.1"
 description = "Surface Wave Dispersion Python Wrapper for surf96."
+requires-python = ">=3.8"
 readme = "README.md"
 authors = [{ name = "Marius Paul Isken", email = "mi@gfz-potsdam.de" }]
 maintainers = [{ name = "Marius Paul Isken", email = "mi@gfz-potsdam.de" }]
@@ -29,14 +23,4 @@ classifiers = [
     "Operating System :: POSIX",
     "Operating System :: MacOS",
 ]
-
-[tool.setuptools.packages.find]
-include = ["pysurf96*"]
-
-[project.urls]
-Home = "https://pyrocko.org"
-GitHub = "https://github.com/miili/pysurf96"
-Issues = "https://github.com/miili/pysurf96/issues"
-
-[project.optional-dependencies]
-dev = ["pre-commit", "pytest", "numpy"]
+dependencies = ["numpy"]
