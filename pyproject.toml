@@ -1,10 +1,5 @@
 [build-system]
-requires = [
-    "wheel",
-    "setuptools >= 61.0.0",
-    "oldest-supported-numpy",
-    "setuptools_scm[toml]>=6.2",
-]
+requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -31,7 +26,10 @@ classifiers = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["pysurf96*"]
+where = ["."]
+
+[tool.setuptools.package-data]
+pysurf96 = ['surfdisp96_ext.*']
 
 [project.urls]
 Home = "https://pyrocko.org"

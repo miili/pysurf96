@@ -17,6 +17,12 @@ This package is for Python 3.
 
 Prerequisits is a Fortran77 compiler, like GNU GCC.
 
+Please run the following command before installing to compile the shared fortran library.
+
+```
+f2py -c -m surfdisp96_ext pysurf96/surfdisp96.f90
+```
+
 ```
 pip3 install .
 ```
