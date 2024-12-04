@@ -86,7 +86,7 @@ def surf96(
     _vs[:nlayers] = vs
     _rho[:nlayers] = rho
 
-    iflsph = 1 if flat_earth else 0
+    iflsph = 0 if flat_earth else 1
     iwave = 1 if wave == "love" else 2
     igr = 0 if velocity == "phase" else 1
     mode = int(mode)

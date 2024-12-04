@@ -1,13 +1,13 @@
 # PySurf96
 
-![Python3](https://img.shields.io/badge/python-3.x-brightgreen.svg)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org/)
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
 _Modelling Surface Wave Dispersion Curves_
 
 This is a slim wrapper around the program `surf96` from _Computer programs in seismology_ by R. Hermann (<http://www.eas.slu.edu/eqc/eqccps.html>) for forward modelling of Rayleigh and Love wave dispersion curves.
 
-In this realisation the Fortran77 code is wrapped by `f2py`, which makes the forward computation approximately **8x faster** compared over calling a Python subprocess.
+In this implementation the Fortran77 code is wrapped by `f2py`, which makes the forward computation approximately **8x faster** compared over calling a Python subprocess.
 
 More useful software for seismology at <https://pyrocko.org>.
 
@@ -18,7 +18,7 @@ This package is for Python 3.
 Prerequisits is a Fortran77 compiler, like GNU GCC.
 
 ```
-pip3 install .
+pip install .
 ```
 
 Or through pip:
