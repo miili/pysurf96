@@ -6,21 +6,32 @@ build-backend = "scikit_build_core.build"
 name = "pysurf96"
 version = "0.0.1"
 description = "Surface Wave Dispersion Python Wrapper for surf96."
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 readme = "README.md"
 authors = [{ name = "Marius Paul Isken", email = "mi@gfz-potsdam.de" }]
 maintainers = [{ name = "Marius Paul Isken", email = "mi@gfz-potsdam.de" }]
-keywords = ["InSAR", "satellite", "radar", "earthquake", "optimization"]
+keywords = [
+    "surface wave dispersion",
+    "surf96",
+    "dispersion curve",
+    "dispersion analysis",
+]
 classifiers = [
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering",
-    "Topic :: Scientific/Engineering :: Atmospheric Science",
-    "Topic :: Scientific/Engineering :: Image Recognition",
     "Topic :: Scientific/Engineering :: Physics",
-    "Topic :: Scientific/Engineering :: Visualization",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: C",
+    "Programming Language :: Fortran",
     "Operating System :: POSIX",
     "Operating System :: MacOS",
 ]
-dependencies = ["numpy"]
+dependencies = ["numpy>=1.23.0"]
+
+[project.optional-dependencies]
+dev = ["pre-commit>=4.0.1", "pytest>=8.3", "ruff>=0.8.0"]
+
+[project.urls]
+Home = "https://pyrocko.org"
+GitHub = "https://github.com/miili/pysurf96"
+Issues = "https://github.com/miili/pysurf96/issues"
+
+[tool.cibuildwheel]

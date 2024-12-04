@@ -22,9 +22,9 @@ add_custom_command(
   OUTPUT ${module_c}
   DEPENDS ${module_src}
   VERBATIM
-  COMMAND "${Python_EXECUTABLE}" -m numpy.f2py 
+  COMMAND "${Python_EXECUTABLE}" -m numpy.f2py
           ${module_src} -m ${module_name}
-          --lower only: surfdisp96 :) 
+          --lower only: surfdisp96 :)
 
 python_add_library(${module_name} MODULE ${module_c} ${module_src} WITH_SOABI)
 target_link_libraries(${module_name} PRIVATE fortranobject)
