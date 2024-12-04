@@ -1,0 +1,71 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "*"
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.22.0
+        env:
+          CIBW_SKIP: "cp313-*"
+          CIBW_BUILD: "*-manylinux_x86_64"  # For debugging
+        with:
+          config-file: "{package}/pyproject.toml"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+          path: ./wheelhouse/*.whl
+
+  make_sdist:
+    name: Make SDist
+    runs-on: ubuntu-latest
+    needs: build_wheels
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Optional, use if you use setuptools_scm
+          submodules: false # Optional, use if you have submodules
+
+      - name: Build SDist
+        run: pipx run build --sdist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cibw-sdist
+          path: dist/*.tar.gz
+
+  pypi-publish:
+    name: Upload release to PyPI
+    if: startsWith(github.ref, 'refs/tags/') # only publish to PyPI on tag pushes
+    needs: [build_wheels, make_sdist]
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pysurf96
+    permissions:
+      id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
+    steps:
+      - name: Download all the wheels and sdists
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cibw-*
+          path: dist
+          merge-multiple: true
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
